@@ -1,0 +1,34 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:41:00 +0000
+Received: from mta.e.bankofexample.co.uk (mta.e.bankofexample.co.uk [136.147.129.20]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:41:00 +0000
+Authentication-Results: spf=pass (sender IP is 136.147.129.20) smtp.mailfrom=bounce.e.bankofexample.co.uk; dkim=pass (signature was verified) header.d=e.bankofexample.co.uk;dmarc=pass action=none header.from=bankofexample.co.uk;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=e.bankofexample.co.uk; s=200608; h=From:To:Subject:Date:MIME-Version:Reply-To:Message-ID; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:136.147.129.20;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mta.e.bankofexample.co.uk;PTR:mta.e.bankofexample.co.uk;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:1;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <bounce-123_HTML-456-789-1234-1@bounce.e.bankofexample.co.uk>
+From: "Bank of Example" <alerts@e.bankofexample.co.uk>
+Reply-To: "Bank of Example" <reply-abc@e.bankofexample.co.uk>
+To: <j.cole@northwind.example>
+Subject: Your October statement is ready
+Date: Mon, 19 Oct 2026 08:40:58 +0000
+Message-ID: <5f2a9b1c-1234-4cde-9f00-abcdef012345@atl1s07mta2111.xt.local>
+X-SFMC-Stack: 7
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_hbslfq"
+
+--=_a_hbslfq
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Dear Customer,
+
+Your October statement is now ready to view. Log on to online banking to see it.
+
+We will never ask for your password or full card number by email.
+
+--=_a_hbslfq
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Dear Customer,</p><p>Your October statement is now ready to view.</p><p><a href="https://click.e.bankofexample.co.uk/?qs=abc123">Log on to online banking</a></p><p>We will never ask for your password or full card number by email.</p><img src="https://view.e.bankofexample.co.uk/a.gif" width="1" height="1"></body></html>
+--=_a_hbslfq--

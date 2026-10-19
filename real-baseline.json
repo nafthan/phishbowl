@@ -1,0 +1,10 @@
+{
+  "tuning": {
+    "maxMissed": 3,
+    "total": 80
+  },
+  "unseen": {
+    "maxMissed": 1,
+    "total": 80
+  }
+}

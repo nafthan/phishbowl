@@ -1,0 +1,22 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:22:00 +0000
+Received: from o2.email.bamboohr.com (o2.email.bamboohr.com [167.89.10.20]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:22:00 +0000
+Authentication-Results: spf=pass (sender IP is 167.89.10.20) smtp.mailfrom=em123.bamboohr.com; dkim=pass (signature was verified) header.d=bamboohr.com;dmarc=pass action=none header.from=bamboohr.com;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bamboohr.com; s=s1; h=from:subject:to:mime-version; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:167.89.10.20;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:o2.email.bamboohr.com;PTR:o2.email.bamboohr.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <bounces+1234-ab-j.cole=northwind.example@em123.bamboohr.com>
+From: "Northwind HR (BambooHR)" <notifications@bamboohr.com>
+To: j.cole@northwind.example
+Subject: Action required: please sign your updated payroll policy
+Date: Mon, 19 Oct 2026 08:21:58 +0000
+Message-ID: <abc@geopod-ismtpd-1>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_850xid"
+
+--=_a_850xid
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Hi Jordan,</p><p>Northwind HR has asked you to sign the updated payroll policy. Please log in to BambooHR to review and sign before 30 Oct.</p><p><a href="https://u1234.ct.sendgrid.net/ls/click?upn=abc">Log in to BambooHR</a></p><img src="https://u1234.ct.sendgrid.net/wf/open?upn=abc" width="1" height="1"></body></html>
+--=_a_850xid--

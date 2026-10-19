@@ -1,0 +1,23 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:05:00 +0000
+Received: from mail-a.mailgun.substack.com (mail-a.mailgun.substack.com [69.72.37.5]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:05:00 +0000
+Authentication-Results: spf=pass (sender IP is 69.72.37.5) smtp.mailfrom=mg-d0.substack.com; dkim=pass (signature was verified) header.d=substack.com;dmarc=pass action=none header.from=substack.com;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=substack.com; s=mg; h=from:to:subject:date:message-id:list-unsubscribe; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:69.72.37.5;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-a.mailgun.substack.com;PTR:mail-a.mailgun.substack.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:3;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <bounce+a1b2c3.d4-j.cole=northwind.example@mg-d0.substack.com>
+From: "Risky Business Weekly" <riskybiz@substack.com>
+To: j.cole@northwind.example
+Subject: This week: ransomware crews move to callback phishing
+Date: Mon, 19 Oct 2026 08:04:58 +0000
+Message-ID: <20261019080458.abc@mg-d0.substack.com>
+List-Unsubscribe: <https://riskybiz.substack.com/action/disable_email?token=abc>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_k4s4yo"
+
+--=_a_k4s4yo
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>This week: ransomware crews move to callback phishing.</p><p>Read the CISA advisory at <a href="https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cyJ9.abc">cisa.gov</a> and the Microsoft write-up at <a href="https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9taWNyb3NvZnQuY29tIn0.def">microsoft.com/security/blog</a>.</p><p>Short link: <a href="https://bit.ly/3abcXYZ">bit.ly/3abcXYZ</a></p><p><a href="https://riskybiz.substack.com/action/disable_email?token=abc">Unsubscribe</a></p><img src="https://eotrx.substackcdn.com/open?token=abc" width="1" height="1"></body></html>
+--=_a_k4s4yo--

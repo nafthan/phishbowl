@@ -1,0 +1,48 @@
+Received: from AM0PR02MB1111.eurprd02.prod.outlook.com (2603:10a6:208:1::11) by AM0PR02MB2222.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:20:05 +0000
+Received: from AM0PR02MB3333.eurprd02.prod.outlook.com ([fe80::1234:5678:9abc:def0]) by AM0PR02MB3333.eurprd02.prod.outlook.com ([fe80::1234:5678:9abc:def0%7]) with mapi id 15.20.8000.010; Mon, 19 Oct 2026 08:20:04 +0000
+Authentication-Results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=northwind.example;
+X-MS-Exchange-Organization-SCL: -1
+X-MS-Exchange-Organization-AuthAs: Internal
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SKI;H:AM0PR02MB3333.eurprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+From: Priya Shah <p.shah@northwind.example>
+To: Jordan Cole <j.cole@northwind.example>
+Subject: RE: October invoice from Contoso
+Date: Mon, 19 Oct 2026 08:20:03 +0000
+Message-ID: <AM0PR02MB3333ABCD@AM0PR02MB3333.eurprd02.prod.outlook.com>
+Thread-Topic: October invoice from Contoso
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_6gs20o"
+
+--=_b_6gs20o
+Content-Type: multipart/alternative; boundary="=_a_3fs2cr"
+
+--=_a_3fs2cr
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hi Jordan,
+
+Attached is the October invoice from Contoso. Can you approve the payment by Friday please?
+
+Thanks,
+Priya
+
+Priya Shah | Finance
+https://www.northwind.example
+
+--=_a_3fs2cr
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Hi Jordan,</p><p>Attached is the October invoice from Contoso. Can you approve the payment by Friday please?</p><p>Thanks,<br>Priya</p><p>Priya Shah | Finance<br><a href="https://www.northwind.example">www.northwind.example</a></p></body></html>
+--=_a_3fs2cr--
+
+--=_b_6gs20o
+Content-Type: application/pdf; name="Contoso_INV-10442.pdf"
+Content-Disposition: attachment; filename="Contoso_INV-10442.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKMSAwIG9iaiA8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4gZW5kb2Jq
+CjIgMCBvYmogPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFtdIC9Db3VudCAwID4+IGVuZG9iagp0cmFp
+bGVyIDw8IC9Sb290IDEgMCBSID4+CiUlRU9GCg==
+--=_b_6gs20o--

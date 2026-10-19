@@ -1,0 +1,21 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:52:10 +0000
+Received: from a9-33.smtp-out.amazonses.com (a9-33.smtp-out.amazonses.com [54.240.9.33]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:52:10 +0000
+Authentication-Results: spf=pass (sender IP is 54.240.9.33) smtp.mailfrom=amazonses.com; dkim=pass (signature was verified) header.d=amazonses.com;dmarc=none action=none header.from=m365-securemail.test;compauth=softpass reason=202
+X-Forefront-Antispam-Report: CIP:54.240.9.33;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:a9-33.smtp-out.amazonses.com;PTR:a9-33.smtp-out.amazonses.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <0100019a-abc@amazonses.com>
+From: "Microsoft 365" <no-reply@m365-securemail.test>
+To: j.cole@northwind.example
+Subject: Your mailbox storage is full - messages are being held
+Date: Mon, 19 Oct 2026 08:52:08 +0000
+Message-ID: <0100019a-abc@email.amazonses.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_8j5lna"
+
+--=_a_8j5lna
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Hello j.cole,</p><p>Your mailbox is 99% full. 14 incoming messages are on hold and will be deleted within 24 hours.</p><p><a href="https://login.micros0ft-mailbox.test/release?u=j.cole">Release messages</a></p></body></html>
+--=_a_8j5lna--

@@ -1,0 +1,42 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:53:10 +0000
+Received: from mail.northwlnd.test (mail.northwlnd.test [198.51.100.77]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:53:10 +0000
+Authentication-Results: spf=pass (sender IP is 198.51.100.77) smtp.mailfrom=northwlnd.test; dkim=pass (signature was verified) header.d=northwlnd.test;dmarc=pass action=none header.from=northwlnd.test;compauth=pass reason=100
+X-Forefront-Antispam-Report: CIP:198.51.100.77;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.northwlnd.test;PTR:mail.northwlnd.test;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <p.shah@northwlnd.test>
+From: Priya Shah <p.shah@northwlnd.test>
+To: j.cole@northwind.example
+Subject: RE: October invoice from Contoso
+Date: Mon, 19 Oct 2026 08:53:08 +0000
+Message-ID: <m1@mail.northwlnd.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_11d8ng"
+
+--=_b_11d8ng
+Content-Type: multipart/alternative; boundary="=_a_7ym0y8"
+
+--=_a_7ym0y8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hi Jordan, updated invoice attached, please enable editing to view it. Priya
+--=_a_7ym0y8--
+
+--=_b_11d8ng
+Content-Type: application/vnd.ms-word.document.macroEnabled.12; name="Contoso_INV-10442.docm"
+Content-Disposition: attachment; filename="Contoso_INV-10442.docm"
+Content-Transfer-Encoding: base64
+
+UEsDBAoAAAAAAOAUU13uR1hmHQAAAB0AAAATABwAW0NvbnRlbnRfVHlwZXNdLnhtbFVUCQADs3TV
+arN01Wp1eAsAAQQAAAAABAAAAAA8P3htbCB2ZXJzaW9uPSIxLjAiPz48VHlwZXMvPlBLAwQKAAAA
+AADgFFNd3VqGDQ0AAAANAAAAEQAcAHdvcmQvZG9jdW1lbnQueG1sVVQJAAOzdNVqs3TVanV4CwAB
+BAAAAAAEAAAAADx3OmRvY3VtZW50Lz5QSwMECgAAAAAA4BRTXQKf5vULAAAACwAAABMAHAB3b3Jk
+L3ZiYVByb2plY3QuYmluVVQJAAOzdNVqs3TVanV4CwABBAAAAAAEAAAAAHBsYWNlaG9sZGVyUEsB
+Ah4DCgAAAAAA4BRTXe5HWGYdAAAAHQAAABMAGAAAAAAAAQAAAKSBAAAAAFtDb250ZW50X1R5cGVz
+XS54bWxVVAUAA7N01Wp1eAsAAQQAAAAABAAAAABQSwECHgMKAAAAAADgFFNd3VqGDQ0AAAANAAAA
+EQAYAAAAAAABAAAApIFqAAAAd29yZC9kb2N1bWVudC54bWxVVAUAA7N01Wp1eAsAAQQAAAAABAAA
+AABQSwECHgMKAAAAAADgFFNdAp/m9QsAAAALAAAAEwAYAAAAAAABAAAApIHCAAAAd29yZC92YmFQ
+cm9qZWN0LmJpblVUBQADs3TVanV4CwABBAAAAAAEAAAAAFBLBQYAAAAAAwADAAkBAAAaAQAAAAA=
+
+--=_b_11d8ng--

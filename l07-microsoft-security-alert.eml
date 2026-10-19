@@ -1,0 +1,30 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:15:30 +0000
+Received: from BN3NAM04HT123.eop-NAM04.prod.protection.outlook.com (mail-bn3nam04on2050.outbound.protection.outlook.com [40.107.92.50]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:15:30 +0000
+Authentication-Results: spf=pass (sender IP is 40.107.92.50) smtp.mailfrom=accountprotection.microsoft.com; dkim=pass (signature was verified) header.d=accountprotection.microsoft.com;dmarc=pass action=none header.from=accountprotection.microsoft.com;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=accountprotection.microsoft.com; s=selector1; h=From:To:Subject:Date:Message-ID; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:40.107.92.50;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN3NAM04HT123.eop-NAM04.prod.protection.outlook.com;PTR:mail-bn3nam04on2050.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <account-security-noreply@accountprotection.microsoft.com>
+From: Microsoft account team <account-security-noreply@accountprotection.microsoft.com>
+To: j.cole@northwind.example
+Subject: Microsoft account unusual sign-in activity
+Date: Mon, 19 Oct 2026 08:15:28 +0000
+Message-ID: <ABCD1234@BN3NAM04HT123.eop-NAM04.prod.protection.outlook.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_nvo1d7"
+
+--=_a_nvo1d7
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+We detected something unusual about a recent sign-in to the Microsoft account j**e@northwind.example.
+
+If this was you, you can safely ignore this email. If not, review your recent activity: https://account.live.com/activity
+
+--=_a_nvo1d7
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>We detected something unusual about a recent sign-in to the Microsoft account.</p><p>If this wasn't you, please <a href="https://account.live.com/activity">review your recent activity</a> and secure your account.</p></body></html>
+--=_a_nvo1d7--

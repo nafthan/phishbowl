@@ -1,0 +1,39 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:02:11 +0000
+Received: from mail180.atl221.mcsv.net (mail180.atl221.mcsv.net [198.2.180.12]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:02:11 +0000
+Authentication-Results: spf=pass (sender IP is 198.2.180.12) smtp.mailfrom=mail180.atl221.mcsv.net; dkim=pass (signature was verified) header.d=acmecoffee.co.uk;dkim=pass (signature was verified) header.d=mcsv.net; dmarc=pass action=none header.from=acmecoffee.co.uk;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acmecoffee.co.uk; s=k2; h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:Content-Type:MIME-Version; bh=x; b=x
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mcsv.net; s=k2; h=Subject:From:Reply-To:To:Date:Message-ID; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:198.2.180.12;CTRY:US;LANG:en;SCL:1;SRV:BULK;IPV:NLI;SFV:NSPM;H:mail180.atl221.mcsv.net;PTR:mail180.atl221.mcsv.net;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:5;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <bounce-mc.us5_123456.789-j.cole=northwind.example@mail180.atl221.mcsv.net>
+From: "Acme Coffee" <hello@acmecoffee.co.uk>
+Reply-To: Acme Coffee <hello@acmecoffee.co.uk>
+To: <j.cole@northwind.example>
+Subject: Last chance: 20% off autumn blends ends today
+Date: Mon, 19 Oct 2026 08:02:09 +0000
+Message-ID: <a1b2c3.20261019080209.abc@mail180.atl221.mcsv.net>
+List-Unsubscribe: <https://acmecoffee.us5.list-manage.com/unsubscribe?u=abc&id=def>, <mailto:unsub@us5.mailchimp.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailer: Mailchimp Mailer - **CID1234**
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_5sb9bm"
+
+--=_a_5sb9bm
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hi Jordan,
+
+Last chance: 20% off all autumn blends ends today only.
+
+Shop now: https://acmecoffee.us5.list-manage.com/track/click?u=abc&id=111&e=999
+
+Unsubscribe: https://acmecoffee.us5.list-manage.com/unsubscribe?u=abc
+
+--=_a_5sb9bm
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><div style="display:none;max-height:0;overflow:hidden">Our best autumn coffees, 20% off until midnight.</div><p>Hi Jordan,</p><p><img src="https://mcusercontent.com/abc/images/hero.jpg" width="600"></p><p>Last chance: 20% off all autumn blends ends today only.</p><p><a href="https://acmecoffee.us5.list-manage.com/track/click?u=abc&id=111&e=999">Shop now</a> · <a href="https://acmecoffee.us5.list-manage.com/track/click?u=abc&id=112&e=999">acmecoffee.co.uk</a></p><p><a href="https://acmecoffee.us5.list-manage.com/unsubscribe?u=abc">Unsubscribe</a></p><img src="https://acmecoffee.us5.list-manage.com/track/open.php?u=abc&id=999" height="1" width="1"></body></html>
+--=_a_5sb9bm--

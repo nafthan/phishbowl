@@ -1,0 +1,33 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:50:20 +0000
+Received: from mailna2.docusign.net (mailna2.docusign.net [64.207.219.71]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:50:20 +0000
+Authentication-Results: spf=pass (sender IP is 64.207.219.71) smtp.mailfrom=docusign.net; dkim=pass (signature was verified) header.d=docusign.net;dmarc=pass action=none header.from=docusign.net;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=docusign.net; s=s1; h=from:reply-to:to:subject:date:message-id; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:64.207.219.71;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mailna2.docusign.net;PTR:mailna2.docusign.net;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <dse_NA2@docusign.net>
+From: "Sam Patel via Docusign" <dse_NA2@docusign.net>
+Reply-To: "Sam Patel" <sam.patel@contoso-legal.co.uk>
+To: "Jordan Cole" <j.cole@northwind.example>
+Subject: Complete with Docusign: NDA_Northwind_Contoso.pdf
+Date: Mon, 19 Oct 2026 08:50:18 +0000
+Message-ID: <0a1b2c3d4e5f@docusign.net>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_ai3iga"
+
+--=_a_ai3iga
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Sam Patel sent you a document to review and sign.
+
+REVIEW DOCUMENT: https://na2.docusign.net/Signing/EmailStart.aspx?a=abc&etti=24
+
+Do Not Share This Email: this email contains a secure link to Docusign.
+
+--=_a_ai3iga
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Sam Patel sent you a document to review and sign.</p><p><a href="https://na2.docusign.net/Signing/EmailStart.aspx?a=abc&etti=24">REVIEW DOCUMENT</a></p><p>Do Not Share This Email: this email contains a secure link to Docusign. Please do not share this email, link, or access code with others.</p><p><a href="https://www.docusign.com/features-and-benefits/mobile">Download the Docusign app</a></p></body></html>
+--=_a_ai3iga--

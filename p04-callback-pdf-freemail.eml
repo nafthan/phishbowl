@@ -1,0 +1,40 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:49:01 +0000
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com [209.85.220.73]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:49:01 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.220.73) smtp.mailfrom=gmail.com; dkim=pass (signature was verified) header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass reason=100
+X-Forefront-Antispam-Report: CIP:209.85.220.73;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-sor-f73.google.com;PTR:mail-sor-f73.google.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <billing.dept.renewals77@gmail.com>
+From: "PayPal Billing" <billing.dept.renewals77@gmail.com>
+To: j.cole@northwind.example
+Subject: Your subscription has been renewed - Order #PP-88231
+Date: Mon, 19 Oct 2026 08:48:59 +0000
+Message-ID: <CAH=cb1@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_2wzvw5"
+
+--=_b_2wzvw5
+Content-Type: multipart/alternative; boundary="=_a_h4w2mg"
+
+--=_a_h4w2mg
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Dear Customer,
+
+Thank you for your payment of £399.99 for your annual subscription. The amount will be taken from your account within 24 hours.
+
+If you did not authorise this payment, call our billing desk on +44 20 7946 0999 to cancel and get a refund.
+
+PayPal Billing
+--=_a_h4w2mg--
+
+--=_b_2wzvw5
+Content-Type: application/pdf; name="Invoice_PP-88231.pdf"
+Content-Disposition: attachment; filename="Invoice_PP-88231.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKMSAwIG9iaiA8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4gZW5kb2Jq
+CjIgMCBvYmogPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFtdIC9Db3VudCAwID4+IGVuZG9iagp0cmFp
+bGVyIDw8IC9Sb290IDEgMCBSID4+CiUlRU9GCg==
+--=_b_2wzvw5--

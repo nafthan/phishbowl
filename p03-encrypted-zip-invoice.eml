@@ -1,0 +1,42 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:47:10 +0000
+Received: from vps-12345.hosting.test (unknown [203.0.113.88]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:47:10 +0000
+Authentication-Results: spf=softfail (sender IP is 203.0.113.88) smtp.mailfrom=fabrikam-print-invoices.test; dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=fabrikam-print-invoices.test;compauth=softpass reason=201
+X-Forefront-Antispam-Report: CIP:203.0.113.88;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:vps-12345.hosting.test;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <billing@fabrikam-print-invoices.test>
+From: Fabrikam Print Billing <billing@fabrikam-print-invoices.test>
+To: j.cole@northwind.example
+Subject: Overdue invoice 44102 - final reminder
+Date: Mon, 19 Oct 2026 08:47:08 +0000
+Message-ID: <x1@vps-12345.hosting.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_3arrrw"
+
+--=_b_3arrrw
+Content-Type: multipart/alternative; boundary="=_a_37emna"
+
+--=_a_37emna
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Dear customer,
+
+Invoice 44102 is now overdue. Please find the invoice attached. Password: 4410
+
+To avoid legal action, payment must be made within 48 hours.
+
+Accounts
+--=_a_37emna--
+
+--=_b_3arrrw
+Content-Type: application/zip; name="Invoice_44102.zip"
+Content-Disposition: attachment; filename="Invoice_44102.zip"
+Content-Transfer-Encoding: base64
+
+UEsDBAoACQAAAOAUU127tf5bKQAAAB0AAAAUABwASW52b2ljZV80NDEwMi5wZGYuanNVVAkAA7N0
+1WqzdNVqdXgLAAEEAAAAAAQAAAAAbbkW+2RBTbdjyAl0o/jnnjvGZFqLA6Tz+xSQn0LMM5WcYULm
+kL8XXqtQSwcIu7X+WykAAAAdAAAAUEsBAh4DCgAJAAAA4BRTXbu1/lspAAAAHQAAABQAGAAAAAAA
+AQAAAKSBAAAAAEludm9pY2VfNDQxMDIucGRmLmpzVVQFAAOzdNVqdXgLAAEEAAAAAAQAAAAAUEsF
+BgAAAAABAAEAWgAAAIcAAAAAAA==
+--=_b_3arrrw--

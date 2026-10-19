@@ -1,0 +1,28 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:12:01 +0000
+Received: from mail-yb1-f200.google.com (mail-yb1-f200.google.com [209.85.219.200]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:12:01 +0000
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass header.i=@partner-uni.ac.uk; spf=pass smtp.mailfrom=r.ahmed@partner-uni.ac.uk; dmarc=pass header.from=partner-uni.ac.uk
+Authentication-Results: spf=pass (sender IP is 209.85.219.200) smtp.mailfrom=googlegroups.com; dkim=pass (signature was verified) header.d=googlegroups.com;dkim=fail (body hash did not verify) header.d=partner-uni.ac.uk;dmarc=fail action=oreject header.from=partner-uni.ac.uk;compauth=pass reason=130;arc=pass
+X-Forefront-Antispam-Report: CIP:209.85.219.200;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-yb1-f200.google.com;PTR:mail-yb1-f200.google.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <secops-uk+bncBABC@googlegroups.com>
+From: Rana Ahmed <r.ahmed@partner-uni.ac.uk>
+Reply-To: secops-uk@googlegroups.com
+Sender: secops-uk@googlegroups.com
+To: secops-uk@googlegroups.com
+Subject: [secops-uk] Meetup slides
+Date: Mon, 19 Oct 2026 08:11:58 +0000
+Message-ID: <CAJ=xyz@mail.gmail.com>
+List-Unsubscribe: <mailto:googlegroups-manage+1234+unsubscribe@googlegroups.com>
+List-ID: <secops-uk.googlegroups.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_9d2c45"
+
+--=_a_9d2c45
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hi all, slides from last night are here: https://drive.google.com/file/d/1AbC/view
+
+Rana
+--=_a_9d2c45--

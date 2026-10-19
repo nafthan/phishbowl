@@ -1,0 +1,34 @@
+Received: from smtp.relay-mail.test (smtp.relay-mail.test [192.0.2.55]) by mx.northwind.example with ESMTPS id 7Q1; Mon, 19 Oct 2026 10:00:02 +0000
+Authentication-Results: mx.northwind.example; spf=pass smtp.mailfrom=relay-mail.test; dkim=pass header.d=relay-mail.test; dmarc=none header.from=relay-mail.test
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=relay-mail.test; s=s1; h=to:subject:date; bh=x; b=x
+X-Spam-Flag: YES
+X-Spam-Status: Yes, score=9.1 required=5.0 tests=HTML_FORM,FORGED_NAME
+Return-Path: <bounce@relay-mail.test>
+From: "support@docs-portal.example" <notify@relay-mail.test>
+To: j.cole@northwind.example
+Subject: A document has been shared with you
+Date: Mon, 19 Oct 2026 10:00:00 +0000
+Message-ID: <a1@relay-mail.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b1"
+
+--=_b1
+Content-Type: text/plain; charset="utf-8"
+
+A document has been shared with you. Open the attached page to view it.
+
+--=_b1
+Content-Type: text/html; name="Shared_Document.htm"
+Content-Disposition: attachment; filename="Shared_Document.htm"
+Content-Transfer-Encoding: base64
+
+PCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0icmVmcmVzaCIgY29u
+dGVudD0iNTt1cmw9aHR0cHM6Ly9sb2dpbi5leGFtcGxlLnRlc3Qvc3RhcnQiPjx0aXRsZT5TaGFy
+ZWQgZG9jdW1lbnQ8L3RpdGxlPjwvaGVhZD4KPGJvZHk+PHA+UGhpc2hib3dsIHRlc3QgZml4dHVy
+ZTogaGFybWxlc3MsIGV2ZXJ5IGFkZHJlc3MgaXMgYSByZXNlcnZlZCAudGVzdCBkb21haW4uPC9w
+Pgo8Zm9ybSBhY3Rpb249Imh0dHBzOi8vbG9naW4uZXhhbXBsZS50ZXN0L25leHQiIG1ldGhvZD0i
+cG9zdCI+PGlucHV0IHR5cGU9ImVtYWlsIiBuYW1lPSJ1Ij48YnV0dG9uPkNvbnRpbnVlPC9idXR0
+b24+PC9mb3JtPgo8c2NyaXB0PndpbmRvdy5sb2NhdGlvbiA9ICdodHRwczovL2xvZ2luLmV4YW1w
+bGUudGVzdC8nOzwvc2NyaXB0PjwvYm9keT48L2h0bWw+Cg==
+
+--=_b1--

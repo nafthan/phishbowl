@@ -1,0 +1,27 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:33:01 +0000
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com [209.85.220.69]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:33:01 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.220.69) smtp.mailfrom=gmail.com; dkim=pass (signature was verified) header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20230601; h=to:subject:message-id:date:from:mime-version; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:209.85.220.69;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-sor-f69.google.com;PTR:mail-sor-f69.google.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <md.helen.carter.office@gmail.com>
+From: Helen Carter <md.helen.carter.office@gmail.com>
+To: j.cole@northwind.example
+Subject: Quick favour
+Date: Mon, 19 Oct 2026 08:32:59 +0000
+Message-ID: <CAG=bec1@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_a_7tf8ls"
+
+--=_a_7tf8ls
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Jordan,
+
+Are you at your desk? I need you to get some Apple gift cards for a client today, I am in meetings all day and can't talk. Reply with the codes as soon as possible and I will reimburse you.
+
+Helen
+Sent from my iPhone
+--=_a_7tf8ls--

@@ -1,0 +1,25 @@
+INCIDENT 2026-1047: credential phishing, Northwind Traders (fictional)
+Reported by j.cole@northwind.example, escalated to soc@northwind.example
+
+At 09:14 UTC three staff received an email from "Payroll Team" <payroll@northwind-hr-portal[.]test>
+asking them to confirm their bank details before the October run. The button linked to
+hxxps://northwind-hr-portal[.]test/verify/login.php?id=8812
+which redirected to hxxp://198.51.100[.]23/owa/auth.html (a cloned sign-in page).
+
+One user on WS-0412 (10.20.4.112) entered credentials. Within 20 minutes the account signed in
+from 203.0.113[.]77 and 203.0.113[.]78 and created an inbox rule forwarding all mail to
+backup.archive.77[@]mailbox-relay[.]test (T1114.003). Sign-ins also seen from 2001:db8::4f2a.
+
+A second wave carried the attachment PayrollUpdate-Oct.zip containing payroll_update.js
+  SHA256  2e5f502eec9a7e8c3ad09385484da336a96b3cc58e1c4d593fcafa88fb2769e8
+  SHA1    794fe1da21eed81f1e0b1e25a4f8301dd204d03e
+  MD5     f3cb48bc4407d18d5ac209d8d6aa99e4
+The script pulled a second stage from hxxps://cdn-sync-storage[.]test/a/stage2.bin
+(SHA256 ee98030fad9567f7595309591318c4b580dc3cbde37bc883c36b327d68f6ce6f) and beaconed every
+60s to c2.cdn-sync-storage[.]test on 443 via 192.0.2.146 (T1071.001).
+
+Techniques: T1566.002, T1078, T1114.003, T1071.001, T1204.002
+The lure abuses the same trust pattern as CVE-2024-21413.
+References: https://attack.mitre.org/techniques/T1566/002/
+            https://learn.microsoft.com/en-us/defender-office-365/
+            https://www.virustotal.com/gui/home/search

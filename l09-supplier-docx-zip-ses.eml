@@ -1,0 +1,56 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:58:44 +0000
+Received: from a8-12.smtp-out.eu-west-1.amazonses.com (a8-12.smtp-out.eu-west-1.amazonses.com [54.240.8.12]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:58:44 +0000
+Authentication-Results: spf=pass (sender IP is 54.240.8.12) smtp.mailfrom=eu-west-1.amazonses.com; dkim=pass (signature was verified) header.d=fabrikam-print.co.uk;dkim=pass (signature was verified) header.d=amazonses.com;dmarc=pass action=none header.from=fabrikam-print.co.uk;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fabrikam-print.co.uk; s=ses1; h=From:To:Subject:Date:Message-ID; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:54.240.8.12;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:a8-12.smtp-out.eu-west-1.amazonses.com;PTR:a8-12.smtp-out.eu-west-1.amazonses.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <0102019a1b2c3d4e-abcdef-000000@eu-west-1.amazonses.com>
+From: Fabrikam Print <orders@fabrikam-print.co.uk>
+To: j.cole@northwind.example
+Subject: Your proof and order confirmation #44102
+Date: Mon, 19 Oct 2026 08:58:42 +0000
+Message-ID: <0102019a1b2c3d4e-abcdef-000000@eu-west-1.amazonses.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_fxut2k"
+
+--=_b_fxut2k
+Content-Type: multipart/alternative; boundary="=_a_j5tggt"
+
+--=_a_j5tggt
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Hello,
+
+Thanks for your order. Your proof is attached (Word) along with the artwork files (zip). Please reply to approve.
+
+Fabrikam Print
+--=_a_j5tggt--
+
+--=_b_fxut2k
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document; name="Proof_44102.docx"
+Content-Disposition: attachment; filename="Proof_44102.docx"
+Content-Transfer-Encoding: base64
+
+UEsDBAoAAAAAAOAUU13uR1hmHQAAAB0AAAATABwAW0NvbnRlbnRfVHlwZXNdLnhtbFVUCQADs3TV
+arN01Wp1eAsAAQQAAAAABAAAAAA8P3htbCB2ZXJzaW9uPSIxLjAiPz48VHlwZXMvPlBLAwQKAAAA
+AADgFFNd3VqGDQ0AAAANAAAAEQAcAHdvcmQvZG9jdW1lbnQueG1sVVQJAAOzdNVqs3TVanV4CwAB
+BAAAAAAEAAAAADx3OmRvY3VtZW50Lz5QSwECHgMKAAAAAADgFFNd7kdYZh0AAAAdAAAAEwAYAAAA
+AAABAAAApIEAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFVUBQADs3TVanV4CwABBAAAAAAEAAAAAFBL
+AQIeAwoAAAAAAOAUU13dWoYNDQAAAA0AAAARABgAAAAAAAEAAACkgWoAAAB3b3JkL2RvY3VtZW50
+LnhtbFVUBQADs3TVanV4CwABBAAAAAAEAAAAAFBLBQYAAAAAAgACALAAAADCAAAAAAA=
+
+--=_b_fxut2k
+Content-Type: application/zip; name="Artwork_44102.zip"
+Content-Disposition: attachment; filename="Artwork_44102.zip"
+Content-Transfer-Encoding: base64
+
+UEsDBAoAAAAAAOAUU12ujg4ODgAAAA4AAAAJABwAZnJvbnQucGRmVVQJAAOzdNVqs3TVanV4CwAB
+BAAAAAAEAAAAACVQREYtMS40CiUlRU9GUEsDBAoAAAAAAOAUU12ujg4ODgAAAA4AAAAIABwAYmFj
+ay5wZGZVVAkAA7N01WqzdNVqdXgLAAEEAAAAAAQAAAAAJVBERi0xLjQKJSVFT0ZQSwECHgMKAAAA
+AADgFFNdro4ODg4AAAAOAAAACQAYAAAAAAABAAAApIEAAAAAZnJvbnQucGRmVVQFAAOzdNVqdXgL
+AAEEAAAAAAQAAAAAUEsBAh4DCgAAAAAA4BRTXa6ODg4OAAAADgAAAAgAGAAAAAAAAQAAAKSBUQAA
+AGJhY2sucGRmVVQFAAOzdNVqdXgLAAEEAAAAAAQAAAAAUEsFBgAAAAACAAIAnQAAAKEAAAAAAA==
+
+--=_b_fxut2k--

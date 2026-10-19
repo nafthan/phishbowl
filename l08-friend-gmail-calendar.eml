@@ -1,0 +1,44 @@
+Received: from AM0PR02MB1234.eurprd02.prod.outlook.com (2603:10a6:208:1::10) by AM0PR02MB5678.eurprd02.prod.outlook.com with HTTPS; Mon, 19 Oct 2026 08:55:01 +0000
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com [209.85.220.41]) by AM1PEPF000012AB.mail.protection.outlook.com (10.167.242.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8000.1 via Frontend Transport; Mon, 19 Oct 2026 08:55:01 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.220.41) smtp.mailfrom=gmail.com; dkim=pass (signature was verified) header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass reason=100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20230601; h=to:subject:message-id:date:from:mime-version; bh=x; b=x
+X-Forefront-Antispam-Report: CIP:209.85.220.41;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-sor-f41.google.com;PTR:mail-sor-f41.google.com;CAT:NONE;SFS:(13230040);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 1
+Return-Path: <alex.morgan.runs@gmail.com>
+From: Alex Morgan <alex.morgan.runs@gmail.com>
+To: j.cole@northwind.example
+Subject: Invitation: Parkrun + coffee @ Sat 24 Oct 2026 09:00
+Date: Mon, 19 Oct 2026 08:54:59 +0000
+Message-ID: <CAF=abc123@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_b_0kavy8"
+
+--=_b_0kavy8
+Content-Type: multipart/alternative; boundary="=_a_ahjx9e"
+
+--=_a_ahjx9e
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Alex Morgan has invited you to Parkrun + coffee.
+
+https://calendar.google.com/calendar/event?action=VIEW&eid=abc
+
+--=_a_ahjx9e
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<html><body><p>Alex Morgan has invited you to <b>Parkrun + coffee</b>.</p><p><a href="https://calendar.google.com/calendar/event?action=VIEW&eid=abc">More details</a></p></body></html>
+--=_a_ahjx9e--
+
+--=_b_0kavy8
+Content-Type: application/ics; name="invite.ics"
+Content-Disposition: attachment; filename="invite.ics"
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSClZFUlNJT046Mi4wCkJFR0lOOlZFVkVOVApTVU1NQVJZOlBhcmtydW4g
+KyBjb2ZmZWUKRFRTVEFSVDoyMDI2MTAyNFQwOTAwMDBaClVSTDpodHRwczovL2NhbGVuZGFyLmdv
+b2dsZS5jb20vY2FsZW5kYXIvZXZlbnQ/ZWlkPWFiYwpFTkQ6VkVWRU5UCkVORDpWQ0FMRU5EQVIK
+
+--=_b_0kavy8--

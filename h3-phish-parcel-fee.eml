@@ -1,0 +1,13 @@
+Received: from vps1.rm-redelivery.test (unknown [203.0.113.40]) by AM1PEPF000012AB.mail.protection.outlook.com with Microsoft SMTP Server id 15.20.8000.1; Mon, 19 Oct 2026 09:10:02 +0000
+Authentication-Results: spf=pass (sender IP is 203.0.113.40) smtp.mailfrom=rm-redelivery.test; dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=rm-redelivery.test;compauth=softpass reason=201
+X-Forefront-Antispam-Report: CIP:203.0.113.40;CTRY:RU;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:vps1.rm-redelivery.test;PTR:InfoDomainNonexistent;CAT:NONE;SFS:;DIR:INB;
+Return-Path: <info@rm-redelivery.test>
+From: "Royal Mail" <info@rm-redelivery.test>
+To: j.cole@northwind.example
+Subject: We could not deliver your parcel
+Date: Mon, 19 Oct 2026 09:10:00 +0000
+Message-ID: <y@vps1.rm-redelivery.test>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body><p>Dear Customer,</p><p>We could not deliver your parcel. A redelivery fee of £1.45 must be paid within 48 hours or it will be returned.</p><p><a href="https://royalmail-redeliver.top/pay">Pay redelivery fee</a></p></body></html>

@@ -1,0 +1,120 @@
+Received: from mx1.northwind.example (10.20.1.5) by mbx02.northwind.example
+ with Microsoft SMTP Server (version=TLS1_2) id 15.2.1544.4; Mon, 19 Oct 2026
+ 09:14:06 +0000
+Received: from mail.northwind-hr-portal.test (unknown [198.51.100.23])
+ by mx1.northwind.example with ESMTPS id 4Xk2Lp0qZbz9vQ
+ for <j.cole@northwind.example>; Mon, 19 Oct 2026 09:14:02 +0000 (UTC)
+Received: from [192.168.56.10] (unknown [192.168.56.10])
+ by mail.northwind-hr-portal.test (Postfix) with ESMTPSA id 8812A
+ for <j.cole@northwind.example>; Mon, 19 Oct 2026 09:13:59 +0000 (UTC)
+Authentication-Results: mx1.northwind.example;
+ spf=pass (sender IP is 198.51.100.23) smtp.mailfrom=northwind-hr-portal.test;
+ dkim=pass (signature was verified) header.d=northwind-hr-portal.test;
+ dmarc=fail action=none header.from=northwind.example;
+ compauth=fail reason=000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=northwind-hr-portal.test;
+ s=mail2026; t=1792401238; h=from:reply-to:to:subject:date:message-id;
+ bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+ b=dGhpcyBpcyBub3QgYSByZWFsIHNpZ25hdHVyZSwgaXQgaXMgYSBkZW1vIHBsYWNlaG9sZGVy
+X-Forefront-Antispam-Report: CIP:198.51.100.23;CTRY:NL;LANG:en;SCL:5;SRV:;IPV:NLI;
+ SFV:SPM;H:mail.northwind-hr-portal.test;PTR:InfoDomainNonexistent;CAT:PHSH;
+ SFS:(13230040)(4636009);DIR:INB;
+X-Microsoft-Antispam: BCL:0;ARA:13230040;
+X-MS-Exchange-Organization-SCL: 5
+X-Mailer: PHPMailer 6.8.1
+Return-Path: <bounce-7731@northwind-hr-portal.test>
+From: "Northwind Payroll" <payroll@northwind.example>
+Reply-To: <payroll-desk@mailbox-relay.test>
+To: "Jordan Cole" <j.cole@northwind.example>
+Subject: Action required: confirm your bank details before 23 Oct payroll
+Date: Mon, 19 Oct 2026 09:13:58 +0000
+Message-ID: <20261019091358.7731@mail.northwind-hr-portal.test>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_mixed_8812"
+
+This is a multi-part message in MIME format.
+
+--=_mixed_8812
+Content-Type: multipart/related; boundary="=_rel_8812"
+
+--=_rel_8812
+Content-Type: multipart/alternative; boundary="=_alt_8812"
+
+--=_alt_8812
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Dear Employee,
+
+Action required: our records show your bank details must be re-confirmed
+within 24 hours or your October salary payment may be delayed.
+
+Please sign in and verify your account at https://portal.northwind.example/payroll
+
+Northwind Payroll Team
+
+--=_alt_8812
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body style=3D"font-family:Segoe UI,Arial,sans-serif">
+<p><img src=3D"cid:logo@northwind" alt=3D"Northwind" width=3D"120"></p>
+<span style=3D"display:none">newsletter receipt order confirmation</span>
+<p>Dear Employee,</p>
+<p><b>Action required:</b> our records show your bank details must be re-co=
+nfirmed within 24 hours or your October salary payment may be delayed.</p>
+<p>Please sign in and verify your account at <a href=3D"https://eur02.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fnorthwind-hr-portal.test%2=
+Fverify%2Flogin.php%3Fid%3D8812&data=3D05%7C02%7Cj.cole%40northwind.example=
+&reserved=3D0">https://portal.northwind.example/payroll</a>.</p>
+<p>If the page does not load, use the <a href=3D"http://198.51.100.23/owa/a=
+uth.html">backup portal</a>.</p>
+<p>Away from your desk? Scan this code with your phone:<br><img src=3D"cid:=
+qr@northwind" alt=3D"QR code" width=3D"132"></p>
+<p>Northwind Payroll Team &middot; <a href=3D"https://microsoft.com.secure-=
+login.northwind-hr-portal.test/help">Help</a></p>
+<img src=3D"http://198.51.100.23/t/open.gif?u=3D8812" width=3D"1" height=3D=
+"1" alt=3D"">
+</body></html>
+--=_alt_8812--
+
+--=_rel_8812
+Content-Type: image/png; name="logo.png"
+Content-Disposition: inline; filename="logo.png"
+Content-ID: <logo@northwind>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6
+kgAAAABJRU5ErkJggg==
+
+--=_rel_8812
+Content-Type: image/png; name="scan-to-verify.png"
+Content-Disposition: inline; filename="scan-to-verify.png"
+Content-ID: <qr@northwind>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAAIQAAACEAQAAAAB5P74KAAABGklEQVR4nL2WS46DIQyDv1TdOzfo
+/Y/138A5gWdBNdI8Fi1ohhVEwtjEkFT4OubG9/G/karqYnqqq6q3cZQAQlrTPZw7lMjgnnTpAAdo
+JpN+Q8XvkQuNy2c4MZpLuIl3cSoFei4GdO3hkCQR8prFu7q6pi4BTc/s+qdSGeCBh5Z7X5ckaxkx
+7OoiMgEnCYm2cZAAxZGtfT5I6++wFXb53MBXR1GAfn3XDz4RDkSJ5F1ddyCl9LhInfCxTTCRfZR3
+YcVZ4rZxEq+cxdEBjiXAcYAjPglGy0cHfgYRIiS28/6sF5PB+PVdP/kIyRYETu5ZSOupLg8dVdhx
+Qkgf1K/Qbko016XtPmGqKB7ywOM9FV/4fDYueef0v4p8AB1nwv4dkCrBAAAAAElFTkSuQmCC
+
+--=_rel_8812--
+
+--=_mixed_8812
+Content-Type: application/pdf; name="Payroll_Policy_Oct2026.pdf.html"
+Content-Disposition: attachment; filename="Payroll_Policy_Oct2026.pdf.html"
+Content-Transfer-Encoding: base64
+
+PCFkb2N0eXBlIGh0bWw+CjxodG1sPjxoZWFkPjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij48dGl0bGU+
+U2lnbiBpbiB0byB2aWV3IGRvY3VtZW50PC90aXRsZT48L2hlYWQ+Cjxib2R5PjxwPlNhbXBsZSBh
+dHRhY2htZW50IGZvciB0aGUgUGhpc2hib3dsIGRlbW8uIEl0IGlzIGhhcm1sZXNzOiB0aGVyZSBp
+cyBubyBzY3JpcHQsIGFuZCB0aGUgZm9ybSBiZWxvdyBwb2ludHMgYXQgYSByZXNlcnZlZCB0ZXN0
+IGRvbWFpbiB0aGF0IGRvZXMgbm90IGV4aXN0LjwvcD4KPGZvcm0gYWN0aW9uPSJodHRwczovL25v
+cnRod2luZC1oci1wb3J0YWwudGVzdC9jb2xsZWN0LnBocCIgbWV0aG9kPSJwb3N0Ij4KPGlucHV0
+IHR5cGU9ImVtYWlsIiBuYW1lPSJ1IiBwbGFjZWhvbGRlcj0iV29yayBlbWFpbCI+IDxpbnB1dCB0
+eXBlPSJwYXNzd29yZCIgbmFtZT0icCIgcGxhY2Vob2xkZXI9IlBhc3N3b3JkIj4gPGJ1dHRvbj5W
+aWV3IGRvY3VtZW50PC9idXR0b24+CjwvZm9ybT48L2JvZHk+PC9odG1sPgo=
+
+--=_mixed_8812--
