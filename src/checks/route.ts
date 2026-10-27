@@ -12,6 +12,11 @@ export function routeChecks(c: Ctx): void {
     else add('route', 'route.ptr', 'Reverse DNS', 'ok', entry.rdns);
     add('route', 'route.tls', 'Encryption on arrival', entry.tls ? 'ok' : 'warn', entry.tls ? 'Delivered over TLS' : 'Delivered without TLS');
   } else add('route', 'route.origin', 'Sending server', 'na', 'No outside server found in Received headers');
+  // No Received, authentication or spam-filter headers at all: a sent item, a draft, or a copy exported without its
+  // delivery headers. Most sender checks can't run, so a clean result means little.
+  if (!hops.length && !c.auth.raw.replace(/[\s;]+/g, '') && !c.spam.length)
+    add('route', 'route.noheaders', 'Delivery headers', 'warn', 'None: no Received, authentication or spam-filter headers, so who really sent it can\'t be checked. ' +
+      'This is usually a sent item, a draft, or an export that dropped them. Save the email from the recipient\'s inbox (Outlook: … › Download; Gmail: Show original › Download)');
 
   const timed = hops.filter(h => h.time !== null) as (typeof hops[number] & { time: number })[];
   let back = 0; for (let i = 1; i < timed.length; i++) if (timed[i].time < timed[i - 1].time - 120000) back++;

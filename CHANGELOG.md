@@ -11,6 +11,7 @@
 - **Allowlist**: `"allow": { "domains": [...], "senders": [...] }`. Authenticated mail from them doesn't raise warnings; red flags still count; spoofed or unauthenticated mail claiming to be them gets a warning instead.
 - **Feedback**: `phishbowl feedback <file> --says phish|legit|spam`, and buttons in the dashboard. `phishbowl feedback` lists false alarms, misses, the checks behind the false alarms and allowlist ideas; `--export` turns the kept ones into test fixtures. Stored on this machine only.
 - **Detection**: more open-hosting services (Framer, Webflow, GitBook, Jimdo, GoDaddy Sites and others seen on the OpenPhish feed), and more two-level country suffixes (com.tr, co.kr, com.mx…) so the registrable domain is right. Real-sample results unchanged, apart from one more phish caught in validate (473/500).
+- **No delivery headers**: an email with no Received, authentication or spam-filter headers (a sent item, a draft, some exports) now gets a warning saying the sender can't be checked and how to save it properly. The warning adds nothing to the score, but the verdict is never "high confidence". Found testing a Proton Mail export.
 - **Logo**: a scheming red fish in a bowl, going for an email on a hook (`assets/logo/`). Also in the dashboard header and as its icon.
 - `docs/checks.md` now covers `.msg`, attached-email, allowlist and online checks.
 

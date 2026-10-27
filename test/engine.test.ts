@@ -307,3 +307,13 @@ test('RTF unwrapping: escapes text outside HTML tags and decodes code-page bytes
   assert.equal(r.html, '<p>café &lt;b&gt;x&lt;/b&gt; €</p>');
   assert.equal(rtfToHtml(String.raw`{\rtf1\ansi{\fonttbl{\f0 Arial;}}Hi \par there}`).html, '<html><body><div>Hi <br>\nthere</div></body></html>');
 });
+
+test('a copy with no delivery headers (sent item, export) says so and is never high confidence', async () => {
+  const a = email(await analyseBytes(enc(['From: Nata <nata@protonmail.example>', 'To: j.cole@northwind.example', 'Subject: test', 'Date: Tue, 27 Oct 2026 21:31:02 +0000',
+    'Message-ID: <abc@protonmail.example>', 'MIME-Version: 1.0', 'Content-Type: text/html; charset=utf-8', '', '<p>hi</p><a href="https://example.org/">example.org</a>'].join('\r\n')), { ownDomains: own }));
+  assert.equal(status(a, 'route.noheaders'), 'warn');
+  assert.equal(a.verdict.conf, 'medium');
+  assert.equal(a.verdict.score, a.checks.filter(c => c.status === 'warn' && c.id !== 'route.noheaders').length, 'shown, but adds nothing to the score');
+  const b = email(await load('l03-github-password-reset.eml'));
+  assert.equal(status(b, 'route.noheaders'), undefined);
+});

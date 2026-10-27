@@ -51,6 +51,7 @@ Statuses seen are the ones the test emails produced; some checks can produce oth
 | Timestamps in order | `route.order` | – | warn, ok |
 | Delivery time | `route.delay` | – | warn, info |
 | Date header | `route.date` | – | warn, ok |
+| Delivery headers | `route.noheaders` | – | warn |
 | Server name check | `route.helo` | – | warn |
 
 ## Spam filter verdicts
