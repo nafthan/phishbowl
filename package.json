@@ -1,10 +1,10 @@
 {
   "name": "phishbowl",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Phishing email analyser: runs the checks a SOC analyst would on a raw .eml and writes the report. Local-first: nothing leaves your machine.",
   "private": true,
   "type": "module",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "engines": {
     "node": ">=22"
   },
@@ -21,11 +21,21 @@
     "./node": {
       "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.js"
+    },
+    "./view": {
+      "types": "./dist/view.d.ts",
+      "default": "./dist/view.js"
+    },
+    "./dashboard": {
+      "types": "./dist/node/dashboard.d.ts",
+      "default": "./dist/node/dashboard.js"
     }
   },
   "files": [
     "dist",
-    "README.md"
+    "assets",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
@@ -33,18 +43,24 @@
     "test": "node --import tsx --test \"test/**/*.test.ts\"",
     "samples": "node scripts/fetch-samples.mjs",
     "test:real": "tsx scripts/real-samples.ts",
+    "online:live": "tsx scripts/online-live.ts",
     "dev": "tsx src/cli.ts",
     "prepare": "npm run build"
   },
   "dependencies": {
+    "@kenjiuno/decompressrtf": "0.1.4",
+    "@kenjiuno/msgreader": "1.28.0",
     "jpeg-js": "^0.4.4",
     "jsqr": "^1.4.0",
     "linkedom": "^0.18.5",
     "pngjs": "^7.0.0"
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^22.10.0",
     "@types/pngjs": "^6.0.5",
+    "cfb": "1.2.2",
+    "jsdom": "^25.0.1",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0"
   }

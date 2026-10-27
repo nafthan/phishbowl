@@ -1,0 +1,46 @@
+{
+  "tuning": {
+    "kind": "phishing",
+    "total": 80,
+    "maxMissed": 3
+  },
+  "unseen": {
+    "kind": "phishing",
+    "total": 80,
+    "maxMissed": 1
+  },
+  "validate": {
+    "kind": "phishing",
+    "total": 500,
+    "maxMissed": 28
+  },
+  "holdout": {
+    "kind": "phishing",
+    "total": 500,
+    "maxMissed": 24
+  },
+  "legit-modern": {
+    "kind": "legitimate",
+    "total": 19,
+    "maxMalicious": 0,
+    "maxSuspicious": 2
+  },
+  "legit-easy-1": {
+    "kind": "legitimate",
+    "total": 2500,
+    "maxMalicious": 0,
+    "maxSuspicious": 2
+  },
+  "legit-easy-2": {
+    "kind": "legitimate",
+    "total": 1400,
+    "maxMalicious": 0,
+    "maxSuspicious": 7
+  },
+  "legit-hard": {
+    "kind": "legitimate",
+    "total": 250,
+    "maxMalicious": 1,
+    "maxSuspicious": 24
+  }
+}

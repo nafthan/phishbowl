@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Phishbowl</title>
+  <style>
+    .ink{stroke:#292929} .inkf{fill:#292929} .paper{fill:#FFFFFF}
+    @media (prefers-color-scheme: dark){ .ink{stroke:#E8E4DC} .inkf{fill:#E8E4DC} .paper{fill:#1A1917} }
+  </style>
+  <!-- water -->
+  <path d="M42 120 Q66 110 90 120 T138 120 T186 120 T216 118 Q226 132 226 152 A98 98 0 0 1 30 152 Q30 134 42 120 Z" fill="#7FB3D5" fill-opacity=".28"/>
+  <!-- fishing line, hook and the email bait -->
+  <path class="ink" d="M148 4 L194 168 V176" fill="none" stroke-width="3.5" stroke-linecap="round"/>
+  <path class="ink" d="M194 168 v14 a11 11 0 0 1 -22 0 v-5" fill="none" stroke-width="5" stroke-linecap="round"/>
+  <path class="ink" d="M172 177 l-5 6" fill="none" stroke-width="5" stroke-linecap="round"/>
+  <g transform="rotate(-10 194 148)">
+    <rect class="paper ink" x="174" y="134" width="40" height="27" rx="3" stroke-width="4"/>
+    <path class="ink" d="M176 137 L194 150 L212 137" fill="none" stroke-width="3.5" stroke-linejoin="round"/>
+  </g>
+  <!-- bowl -->
+  <path class="ink" d="M42 120 Q66 110 90 120 T138 120 T186 120 T216 118" fill="none" stroke-width="4" stroke-linecap="round"/>
+  <path class="ink" d="M62 50 H194 M74 50 Q74 70 60 82 Q30 112 30 152 A98 98 0 0 0 226 152 Q226 112 196 82 Q182 70 182 50"
+        fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- the fish: red, horned, scheming, going straight for the bait -->
+  <g transform="rotate(-12 110 192)">
+    <path d="M66 192 L42 170 L46 194 L40 216 Z" fill="#B8322A" class="ink" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M62 194 C80 156 144 152 172 182 C178 188 178 198 172 204 C144 232 80 228 62 194 Z" fill="#D9443A" class="ink" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M96 168 L110 146 L122 166" fill="#B8322A" class="ink" stroke-width="4" stroke-linejoin="round"/>
+    <path class="ink" d="M120 176 Q128 194 120 212" fill="none" stroke-width="4" stroke-linecap="round"/>
+    <path d="M134 170 Q130 150 144 142 Q140 158 146 170 Z" class="inkf"/>
+    <!-- narrowed eye under a hard brow -->
+    <circle cx="150" cy="184" r="9" fill="#FFFFFF" class="ink" stroke-width="3"/>
+    <circle cx="153" cy="186" r="4.5" class="inkf"/>
+    <path d="M139 181 L162 183 L162 174 L139 172 Z" fill="#D9443A"/>
+    <path class="ink" d="M137 172 L165 182" fill="none" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- grin with a fang -->
+    <path class="ink" d="M158 200 Q167 203 174 194" fill="none" stroke-width="4" stroke-linecap="round"/>
+    <path d="M162 201 l2 7 l3.5 -7.5 Z" fill="#FFFFFF" class="ink" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+  <!-- bubbles -->
+  <circle class="ink" cx="70" cy="148" r="5" fill="none" stroke-width="3"/>
+  <circle class="ink" cx="84" cy="134" r="3.5" fill="none" stroke-width="3"/>
+</svg>

@@ -1,0 +1,123 @@
+{
+  "ownDomains": [
+    "northwind.example"
+  ],
+  "emails": {
+    "example-northwind-payroll.eml": {
+      "expect": "malicious",
+      "set": "example"
+    },
+    "h1-legit-parcel-notice.eml": {
+      "expect": "clean",
+      "set": "holdout"
+    },
+    "h2-legit-news-unknown-tracker.eml": {
+      "expect": "clean",
+      "set": "holdout"
+    },
+    "h3-phish-parcel-fee.eml": {
+      "expect": "malicious",
+      "set": "holdout"
+    },
+    "h4-phish-thread-hijack.eml": {
+      "expect": "notclean",
+      "set": "holdout"
+    },
+    "l01-mailchimp-newsletter.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l02-internal-colleague-invoice.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l03-github-password-reset.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l04-bank-statement-sfmc.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l05-docusign-envelope.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l06-substack-tracked-links.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l07-microsoft-security-alert.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l08-friend-gmail-calendar.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l09-supplier-docx-zip-ses.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l10-mailing-list-forwarded.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "l11-hr-system-real-saas.eml": {
+      "expect": "clean",
+      "set": "tuning"
+    },
+    "m01-phish-with-headers.msg": {
+      "expect": "malicious",
+      "set": "msg"
+    },
+    "m02-report-with-attached-item.msg": {
+      "expect": "malicious",
+      "set": "msg"
+    },
+    "m03-rtf-hyperlink-no-headers.msg": {
+      "expect": "notclean",
+      "set": "msg"
+    },
+    "p01-bec-giftcards-freemail.eml": {
+      "expect": "notclean",
+      "set": "tuning"
+    },
+    "p02-compromised-sender-pages-dev.eml": {
+      "expect": "malicious",
+      "set": "tuning"
+    },
+    "p03-encrypted-zip-invoice.eml": {
+      "expect": "malicious",
+      "set": "tuning"
+    },
+    "p04-callback-pdf-freemail.eml": {
+      "expect": "notclean",
+      "set": "tuning"
+    },
+    "p05-ses-lookalike-m365.eml": {
+      "expect": "malicious",
+      "set": "tuning"
+    },
+    "p06-macro-docx-lookalike.eml": {
+      "expect": "malicious",
+      "set": "tuning"
+    },
+    "p07-html-form-redirect.eml": {
+      "expect": "malicious",
+      "set": "coverage"
+    },
+    "p08-attached-email-attack.eml": {
+      "expect": "malicious",
+      "set": "nested"
+    },
+    "r01-report-as-attachment.eml": {
+      "expect": "malicious",
+      "set": "nested"
+    },
+    "r02-report-of-legit-newsletter.eml": {
+      "expect": "clean",
+      "set": "nested"
+    }
+  }
+}
