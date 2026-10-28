@@ -20,15 +20,37 @@ function assetDir(): string {
   for (let i = 0; i < 4; i++, dir = dirname(dir)) { const p = join(dir, 'assets', 'dashboard'); if (existsSync(join(p, 'index.html'))) return p; }
   throw new Error('Dashboard assets not found (assets/dashboard)');
 }
-let cache: { html: string; css: string; js: string } | null = null;
-const assets = () => cache || (cache = { html: readFileSync(join(assetDir(), 'index.html'), 'utf8'), css: readFileSync(join(assetDir(), 'app.css'), 'utf8'), js: readFileSync(join(assetDir(), 'app.js'), 'utf8') });
+let cache: { html: string; css: string; js: string; fonts: string; logo: string; icon: string } | null = null;
+/** The logo mark, inline: its ink follows the page's theme. */
+function logoSvg(dir: string): { inline: string; icon: string } {
+  const p = join(dir, '..', 'logo', 'phishbowl-mark.svg');
+  if (!existsSync(p)) return { inline: '', icon: '' };
+  const svg = readFileSync(p, 'utf8');
+  const inner = svg.slice(svg.indexOf('<!-- water -->'), svg.lastIndexOf('</svg>')).replace(/<!--[\s\S]*?-->/g, '').replace(/\s*\n\s*/g, ' ').trim();
+  return { inline: `<svg class="logo" viewBox="0 0 256 256" aria-hidden="true" focusable="false">${inner}</svg>`,
+    icon: `<link rel="icon" href="data:image/svg+xml;base64,${Buffer.from(svg.replace(/\s*\n\s*/g, ' ')).toString('base64')}">` };
+}
+/** Geist and Geist Mono (SIL Open Font License, assets/dashboard/fonts/OFL.txt), embedded so nothing is fetched. */
+function fontFaces(dir: string): string {
+  const face = (family: string, file: string) => {
+    const p = join(dir, 'fonts', file);
+    return existsSync(p) ? `@font-face{font-family:'${family}';src:url(data:font/woff2;base64,${readFileSync(p).toString('base64')}) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}` : '';
+  };
+  return face('Geist', 'Geist-Variable.woff2') + face('Geist Mono', 'GeistMono-Variable.woff2');
+}
+const assets = () => {
+  if (cache) return cache;
+  const dir = assetDir(), logo = logoSvg(dir);
+  return (cache = { html: readFileSync(join(dir, 'index.html'), 'utf8'), css: readFileSync(join(dir, 'app.css'), 'utf8'), js: readFileSync(join(dir, 'app.js'), 'utf8'),
+    fonts: fontFaces(dir), logo: logo.inline, icon: logo.icon });
+};
 
 /** JSON that is safe inside a <script> element. */
 const scriptJson = (v: unknown) => JSON.stringify(v).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
 
 /** The static page allows nothing to load from anywhere: no fonts, images, scripts or connections. */
-export const STATIC_CSP = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'";
-const LIVE_CSP = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'";
+export const STATIC_CSP = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; font-src data:; base-uri 'none'; form-action 'none'";
+const LIVE_CSP = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'";
 
 export interface DashboardOptions {
   mode: 'live' | 'static';
@@ -47,6 +69,9 @@ export function renderDashboard(o: DashboardOptions): string {
   const config = { mode: o.mode, version: VERSION, embed: !!o.embed, preparedBy: o.preparedBy || '', online: !!o.online, feedback: !!o.feedback, created: new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC' };
   return a.html
     .replace('<!--PB:CSP-->', o.mode === 'static' ? `<meta http-equiv="Content-Security-Policy" content="${STATIC_CSP}">` : '')
+    .replace('<!--PB:ICON-->', () => a.icon)
+    .replace('<!--PB:LOGO-->', () => a.logo)
+    .replace('/*PB:FONTS*/', () => a.fonts)
     .replace('/*PB:CSS*/', () => a.css)
     .replace('/*PB:CONFIG*/', () => scriptJson(config))
     .replace('/*PB:DATA*/', () => scriptJson({ views: o.mode === 'static' ? o.views || [] : [] }))

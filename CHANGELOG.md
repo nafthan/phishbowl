@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+**Phishbowl now has no dependencies.** It moved to its own code, one format at a time, each checked against the package it replaced. The only outside code it can use is an optional QR reader.
+
+- **Compressed RTF** (Outlook bodies) is decoded by `src/lzfu.ts` instead of `@kenjiuno/decompressrtf`. It matches the package byte for byte on all 25 RTF bodies in the real `.msg` test files, and the [MS-OXRTFCP] example.
+- **PNG** images (for reading QR codes) are decoded by `src/node/png.ts`, using Node's built-in zlib, instead of `pngjs`. Every colour type, bit depth, palette transparency and interlacing; pixel-identical to pngjs on 15 test images (now in `test/fixtures/png/`) and 60 real PNGs from the sample emails.
+- **Outlook `.msg`** is read by `src/files/cfb.ts` (the compound-file container) and `src/msg.ts` (MAPI properties) instead of `@kenjiuno/msgreader`. It gives the same result on all 19 real `.msg` test files, including nested items three deep, 8 MB attachments and Japanese Shift-JIS. It is part of the engine now, so `.msg` files work in browsers too. Two small fixes along the way: an attached Outlook item without a display name is named after its subject (it was "undefined.eml"), and HTML bodies stored as bytes are decoded in their own code page.
+- **HTML** is parsed by `src/html.ts` (with the standard's full table of 2,231 named entities in `src/entities.ts`) instead of `linkedom` and its 13 sub-packages. It reads email HTML the way a browser does where it matters, and it fixed three things linkedom got wrong:
+  - links written in capitals (`<A HREF=…>`) were missed entirely. In one legitimate newsletter linkedom saw 2 of 26 links;
+  - an email with `<html>` but no `<body>` tag was read as having no text at all, so it was flagged "empty message" (71 of the real emails);
+  - textarea text wasn't decoded.
+  Across all 5,358 real emails, 5,123 analyses are identical. Seeing the whole email moved 8 verdicts: 5 phishing emails went from malicious (12) to suspicious (11) because they are no longer "empty", one phish (validate) dropped to clean for the same reason, and 2 hard legitimate newsletters are now suspicious for links linkedom had missed (a link showing tesco.ie that goes to another domain; a `javascript:` link). The baseline was updated to match.
+- **New dashboard**, rebuilt from scratch as an application rather than a single page, with every feature kept. A navigation sidebar; a queue page with verdict counts, the add-emails card and a sortable table; and one page per section of an email (Overview, Checks, Headers, Links, Attachments, Content, Indicators, Report, Customer email, Export) with its own URL, so the back button and shared links work. A ⌘K command palette searches emails, sections and actions. The look follows shadcn/ui: a neutral canvas, white cards with large radii on hairline borders, pill controls, colour only for verdicts. System, light, dark and night themes; phone layout with a slide-in sidebar. Set in Geist and Geist Mono (SIL Open Font License), embedded so the page still loads nothing from anywhere; the CSP allows `font-src data:`.
+- **QR reading is optional.** `jsqr` and `jpeg-js` are now optional peer dependencies, loaded only if installed (`npm install jsqr jpeg-js`). Without them, images get a new `links.qr-unchecked` warning that doesn't add to the score but keeps the verdict at medium confidence. A packed install was checked both ways.
+
 ## 0.3.0 (27 Oct 2026)
 
 - **Reported emails**: a user's report (a forward with the phish attached) is recognised, and the attached original is analysed instead, with who reported it. An email attached as part of an attack is analysed too and its verdict counts (a malicious attached email is a critical red flag). Bounces show the returned message without counting it. Up to 3 levels deep and 5 attached emails.

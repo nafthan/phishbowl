@@ -19,24 +19,31 @@ async function staticPage() {
   return { html: renderDashboard({ mode: 'static', views }), views };
 }
 
-test('static dashboard: one file, no outside connections, every email renders, nothing clickable', async () => {
+test('static dashboard: one file, no outside connections, every email and section renders, nothing clickable', async () => {
   const { html, views } = await staticPage();
   assert.ok(html.includes(`content="${STATIC_CSP}"`));
   assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+href="(?!data:)/i, 'no external scripts, stylesheets or icons (the icon is a data: URI)');
+  assert.match(html, /@font-face\{font-family:'Geist';src:url\(data:font\/woff2;base64,/, 'fonts are embedded');
+  assert.doesNotMatch(html, /url\((?!data:)/, 'no CSS url() pointing anywhere');
   const dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'file:///report.html' });
   const errors: string[] = []; dom.window.addEventListener('error', e => errors.push(e.message));
   await tick(300);
   const d = dom.window.document;
-  assert.equal(d.querySelectorAll('.item').length, views.length);
-  for (const item of d.querySelectorAll<HTMLElement>('.item')) {
-    item.click(); await tick();
+  assert.equal(d.querySelectorAll('tr.item').length, views.length, 'the queue lists every email');
+  assert.ok(d.getElementById('b-snapshot')!.hidden && !d.getElementById('drop'), 'no live-only controls in a saved file');
+  for (const item of [...d.querySelectorAll<HTMLElement>('tr.item')]) {
+    item.click(); await tick(30);
     assert.ok(d.querySelector('.d-title'), 'detail rendered');
-    const exportPre = d.querySelector('#sec-export pre');
-    const text = visible(d.getElementById('detail')!).replace(exportPre ? visible(exportPre) : '', '');   // exports are raw on purpose
-    assert.doesNotMatch(text, /\bhttps?:\/\//, 'a live URL in visible text');
+    // Walk every section of this email through the sidebar.
+    for (const link of [...d.querySelectorAll<HTMLButtonElement>('#nav .sb-link')].filter(b => !/Queue|Add emails/.test(b.textContent || ''))) {
+      link.click(); await tick(30);
+      if (d.getElementById('sec-export')) continue;   // exports are raw on purpose
+      assert.doesNotMatch(visible(d.getElementById('page')!), /\bhttps?:\/\//, `a live URL in visible text (${link.textContent})`);
+    }
+    d.querySelector<HTMLButtonElement>('#nav .sb-link')!.click(); await tick(30);   // back to the queue
   }
   assert.deepEqual(errors, []);
-  assert.equal([...d.querySelectorAll('a')].filter(a => !(a.getAttribute('href') || '').startsWith('#')).length, 0, 'no links except section jumps');
+  assert.equal([...d.querySelectorAll('a')].filter(a => !(a.getAttribute('href') || '').startsWith('#')).length, 0, 'no links');
   dom.window.close();
 });
 
@@ -48,7 +55,7 @@ test('email content is shown as text, never as HTML', async () => {
   const w = dom.window as unknown as { pwned?: number }, d = dom.window.document;
   assert.equal(w.pwned, undefined);
   assert.equal(d.querySelector('.d-title')?.textContent, '<img src=x onerror="window.pwned=1">');
-  assert.equal(d.querySelectorAll('#detail img, #detail b[onclick]').length, 0);
+  assert.equal(d.querySelectorAll('#page img, #page b[onclick]').length, 0);
   dom.window.close();
 });
 

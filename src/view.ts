@@ -128,5 +128,5 @@ function emailParts(a: EmailAnalysis) {
 }
 
 /** A short summary for lists (the dashboard's queue, an API listing). */
-export const summaryOf = (v: View) => ({ id: v.id, file: v.file, kind: v.kind, analysedAt: v.analysedAt, verdict: v.verdict, subject: v.summary?.subject ?? '', from: v.summary?.from ?? '',
+export const summaryOf = (v: View) => ({ id: v.id, file: v.file, kind: v.kind, analysedAt: v.analysedAt, verdict: v.verdict, subject: v.summary?.subject ?? '', from: v.summary?.from ?? '', date: v.summary?.date ?? '',
   top: v.findings[0] ? v.findings[0].name : '', indicators: v.indicators.filter(i => !i.off).length });
