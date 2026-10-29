@@ -4,7 +4,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { analyseBytes, analyseFile } from '../src/node/index.js';
+import { analyseBytes, analyseFile, nodeEnv } from '../src/node/index.js';
 const root = fileURLToPath(new URL('..', import.meta.url));
 import { GROUPS, WEIGHT } from '../src/verdict.js';
 const seen = new Map<string, { group: string; name: string; st: Set<string> }>();
@@ -19,6 +19,7 @@ for (const d of ['test/fixtures', 'samples/tuning', 'samples/unseen', 'samples/l
 const add = (a: Awaited<ReturnType<typeof analyseBytes>>) => { if (a.kind === 'email') for (const c of a.checks) { const k = seen.get(c.id) || { group: c.group, name: c.name, st: new Set<string>() }; k.st.add(c.status); seen.set(c.id, k); } };
 const fx = (n: string) => join(root, 'test/fixtures', n);
 add(await analyseFile(fx('l11-hr-system-real-saas.eml'), { allow: { domains: ['bamboohr.com'] } }));
+add(await analyseFile(fx('example-northwind-payroll.eml'), { env: nodeEnv({ qr: false }) }));
 add(await analyseFile(fx('h3-phish-parcel-fee.eml'), { allow: { domains: ['rm-redelivery.test'] } }));
 const J = (v: unknown, status = 200) => new Response(JSON.stringify(v), { status });
 const fake = (reg: string, mx: boolean, nx = false) => (async (u: string | URL) => {

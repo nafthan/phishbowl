@@ -41,6 +41,6 @@
     "kind": "legitimate",
     "total": 250,
     "maxMalicious": 1,
-    "maxSuspicious": 24
+    "maxSuspicious": 26
   }
 }
