@@ -36,6 +36,16 @@ npm install          # also builds dist/
 npm install -g .     # puts `phishbowl` on your PATH (or run `node dist/cli.js`)
 ```
 
+**No dependencies.** Phishbowl is its own code: the email parser, HTML parser, Outlook `.msg` reader, RTF and PNG decoders are all in `src/`. The only outside code it can use is the optional QR reader below. (`npm install` in a clone also fetches development tools such as TypeScript and the test runner; they aren't part of what runs.)
+
+**Optional: reading QR codes.** QR codes in images are a common way to sneak a link past email filters. Reading them uses two small open-source packages, [jsQR](https://github.com/cozmo/jsQR) (Apache-2.0) and [jpeg-js](https://github.com/jpeg-js/jpeg-js) (BSD-3, for JPEG images). They are not installed with Phishbowl. A clone already has them (as development tools); otherwise install them next to it:
+
+```sh
+npm install -g jsqr jpeg-js      # if Phishbowl was installed globally from a package
+```
+
+Without them, every other check works the same, and emails with images get a "not checked for QR codes" warning that doesn't add to the score but keeps the verdict at medium confidence.
+
 ## Use
 
 ```sh
@@ -131,7 +141,16 @@ The OpenPhish community feed is free for non-commercial use only ([terms](https:
 
 ## Dashboard
 
-The dashboard shows the same analysis visually: a queue of emails with verdict counts, and a page per email covering the verdict, key findings, every check, headers, links, attachments, content and indicators. Each email also gets a report with "already done" ticks, the customer email, and the exports. Theme: auto, light, dark or night.
+![The Phishbowl dashboard](docs/img/dashboard.png)
+
+The dashboard is an app shell: a sidebar for navigation, a **queue** page, and a set of pages for each email.
+
+- **Queue:** counts by verdict, the add-emails card (drop, choose, or paste; the "Check online" switch), and a sortable, filterable table of every email with its verdict, score, top finding, date and file.
+- **An email:** Overview (verdict, score, key findings, authentication, message details, what it contains), then Checks, Headers, Links, Attachments, Content, Indicators, Report, Customer email and Export as their own pages, chosen in the sidebar or with the pager at the bottom. Each has a link you can share (`#/email/<id>/<section>`) and the browser's back button works.
+- **Search everything with ⌘K / Ctrl+K:** emails, the current email's sections, and actions (add emails, save as HTML, appearance). `j` and `k` open the next or previous email, `/` focuses the queue filter.
+- **Appearance:** system, light, dark or night.
+
+It is set in [Geist](https://github.com/vercel/geist-font) and Geist Mono, embedded in the page so nothing is fetched (SIL Open Font License, `assets/dashboard/fonts/OFL.txt`).
 
 It comes in two forms, built from the same files in `assets/dashboard/`.
 
@@ -191,7 +210,7 @@ The full list, with weights, is in [docs/checks.md](docs/checks.md). In short:
   - text vs destination, lookalikes, bare IPs, `user@host`, `javascript:`/`data:`;
   - shorteners, open redirects, free and open hosting, risky TLDs, subdomain chains;
   - your address carried in the link.
-  - Safe Links, Google, Proofpoint and Postmark wrappers are unwrapped first. QR codes in PNG and JPEG images are decoded.
+  - Safe Links, Google, Proofpoint and Postmark wrappers are unwrapped first. QR codes in PNG and JPEG images are decoded, with the [optional QR reader](#install).
 - **Attachments**
   - real type from the content vs the declared type vs the extension; double extensions; risky types including `.mobileconfig`; entropy;
   - ZIP listings (encrypted entries, risky files inside);
@@ -222,7 +241,7 @@ console.log(reportText(buildReport(a, { audience: 'mgmt' })));
 console.log(exportAs('stix', a));
 ```
 
-In a browser, `import { analyse, browserEnv } from 'phishbowl'` and pass `browserEnv()` as `env`. Pass a QR decoder (for example jsQR) to `browserEnv` if you want QR codes read. `.msg` files need the Node host (`env.readMsg`). Online lookups work in browsers too where CORS allows; pass your own `fetch` in `online` to route them through a proxy.
+In a browser, `import { analyse, browserEnv } from 'phishbowl'` and pass `browserEnv()` as `env`. Pass a QR decoder (for example jsQR on a canvas) to `browserEnv` if you want QR codes read. `.msg` files work in browsers too. Online lookups work in browsers too where CORS allows; pass your own `fetch` in `online` to route them through a proxy.
 
 ## Testing
 
@@ -246,18 +265,18 @@ Every real set is pinned to exact files and versions in `scripts/sample-sets.jso
   - *hard* is legitimate mail that looks like spam (HTML newsletters and marketing), the hardest test of false alarms.
 - **Modern messages** with today's authentication headers (DKIM, DMARC, ARC, bounces, calendar invites), taken from the test fixtures of open-source email libraries (MimeKit, mailauth, mailparser, postal-mime, mail; all MIT-style licences).
 
-Current results (v0.3.0; the same as v0.2.0 apart from one more phish caught in validate):
+Current results (v0.3.0 with its own HTML parser, see the changelog):
 
 | Set | Kind | Emails | Result |
 | --- | --- | --- | --- |
 | tuning | phishing | 80 | 77 flagged (96%) |
 | unseen | phishing | 80 | 79 flagged (99%) |
-| validate | phishing | 500 | 473 flagged (95%) |
+| validate | phishing | 500 | 472 flagged (94%) |
 | **holdout** | phishing | 500 | **476 flagged (95%)**: scored once with the finished engine, never looked at |
 | legit-modern | legitimate | 19 | 17 clean · 2 suspicious (a bounce, an unauthenticated message) · 0 malicious |
 | legit-easy-1 | legitimate | 2,500 | 2,498 clean (99.9%) · 2 suspicious · 0 malicious |
 | legit-easy-2 | legitimate | 1,400 | 1,393 clean (99.5%) · 7 suspicious · 0 malicious |
-| legit-hard | legitimate | 250 | 225 clean (90%) · 24 suspicious · 1 malicious (a blog-update digest of hundreds of raw links) |
+| legit-hard | legitimate | 250 | 223 clean (89%) · 26 suspicious · 1 malicious (a blog-update digest of hundreds of raw links) |
 
 How to read these numbers:
 - **Use the holdout figure** as the honest estimate for new phishing. The rules were adjusted after looking at tuning, unseen and validate. Replace holdout with a fresh set after the next round of rule changes.
@@ -277,6 +296,8 @@ When you change a rule:
 src/
   analyse.ts        entry point: email or text → checks, verdict, indicators
   nested.ts         attached emails: user reports vs attachment attacks
+  html.ts           a small HTML parser for analysis (entities.ts: the standard's named entities)
+  msg.ts            Outlook .msg → standard email (files/cfb.ts reads the container, lzfu.ts the compressed RTF)
   rtf.ts            Outlook's RTF bodies (and HTML wrapped in RTF) → HTML
   allow.ts          the allowlist
   online.ts         opt-in lookups: RDAP, DNS over HTTPS, phishing feeds, URLhaus
@@ -286,12 +307,12 @@ src/
   mime.ts headers.ts links.ts domains.ts text.ts defang.ts indicators.ts lists.ts
   files/            attachment inspection: type sniffing, ZIP, HTML, hashes
   report/           reports, customer email, exports (KQL, SPL, Wazuh, STIX, CSV, JSON)
-  node/             Node host (HTML parsing with linkedom, QR decoding, .msg reading), file helpers,
+  node/             Node host (PNG decoding, the optional QR reader), file helpers,
                     the lookup cache and feedback storage
   view.ts           view model: an analysis as display-ready, defanged data (for the dashboard or any front-end)
   node/dashboard.ts renders the static dashboard and runs the local server (phishbowl ui)
   cli.ts            the phishbowl command
-assets/dashboard/   the dashboard page, styles and script (no dependencies, no outside connections)
+assets/dashboard/   the dashboard page, styles, script and fonts (no dependencies, no outside connections)
 assets/logo/        the logo: mark and wordmark as SVG (follow light/dark mode) and PNG
 test/               node:test suites and fixtures
 scripts/            fetch and score the real samples; regenerate docs/checks.md
@@ -314,4 +335,4 @@ prototype/          the original single-page browser prototype (superseded by th
 
 [MIT](LICENSE): use, change and share it freely, including commercially, as long as the copyright notice stays. Test data fetched by the scripts keeps its own licence (see Testing) and is never committed. The OpenPhish feed used by online lookups is non-commercial only (see Online lookups).
 
-The logo (`assets/logo/`) is part of the project and covered by the same licence.
+The logo (`assets/logo/`) is part of the project and covered by the same licence. The dashboard's fonts, Geist and Geist Mono, are © The Geist Project Authors under the SIL Open Font License 1.1 (`assets/dashboard/fonts/OFL.txt`).
