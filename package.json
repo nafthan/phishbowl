@@ -47,21 +47,26 @@
     "dev": "tsx src/cli.ts",
     "prepare": "npm run build"
   },
-  "dependencies": {
-    "@kenjiuno/decompressrtf": "0.1.4",
-    "@kenjiuno/msgreader": "1.28.0",
-    "jpeg-js": "^0.4.4",
-    "jsqr": "^1.4.0",
-    "linkedom": "^0.18.5",
-    "pngjs": "^7.0.0"
-  },
   "devDependencies": {
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22.10.0",
-    "@types/pngjs": "^6.0.5",
     "cfb": "1.2.2",
+    "jpeg-js": "^0.4.4",
     "jsdom": "^25.0.1",
+    "jsqr": "^1.4.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "jpeg-js": "^0.4.4",
+    "jsqr": "^1.4.0"
+  },
+  "peerDependenciesMeta": {
+    "jpeg-js": {
+      "optional": true
+    },
+    "jsqr": {
+      "optional": true
+    }
   }
 }
