@@ -317,3 +317,18 @@ test('a copy with no delivery headers (sent item, export) says so and is never h
   const b = email(await load('l03-github-password-reset.eml'));
   assert.equal(status(b, 'route.noheaders'), undefined);
 });
+
+test('without the optional QR reader, images are listed as not checked and nothing else changes', async () => {
+  const { nodeEnv, qrSupport } = await import('../src/node/index.js');
+  assert.ok(qrSupport().qr, 'the dev install has jsqr');
+  const file = join(dir, 'example-northwind-payroll.eml');
+  const withQr = email(await analyseFile(file, { ownDomains: own }));
+  const without = email(await analyseFile(file, { ownDomains: own, env: nodeEnv({ qr: false }) }));
+  assert.equal(status(withQr, 'links.qr'), 'bad');
+  assert.equal(status(without, 'links.qr'), undefined);
+  assert.equal(status(without, 'links.qr-unchecked'), 'warn');
+  assert.match(without.checks.find(c => c.id === 'links.qr-unchecked')!.result, /npm install jsqr jpeg-js/);
+  assert.equal(without.verdict.v, 'malicious');
+  const noImages = email(await load('l03-github-password-reset.eml'));
+  assert.equal(status(noImages, 'links.qr-unchecked'), undefined);
+});
