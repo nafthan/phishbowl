@@ -110,6 +110,7 @@ Statuses seen are the ones the test emails produced; some checks can produce oth
 | Impersonation with a risky link | `links.impersonation` | 5 (critical) | bad |
 | Unwrapped links | `links.unwrapped` | – | info |
 | QR codes | `links.qr` | 3 | bad, ok |
+| QR codes | `links.qr-unchecked` | – | warn |
 
 ## Attachments
 
