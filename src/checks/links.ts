@@ -29,8 +29,11 @@ export function linkChecks(c: Ctx): void {
   const wrapped = links.filter(l => l.unwrapped);
   if (wrapped.length) add('links', 'links.unwrapped', 'Unwrapped links', 'info',
     `${wrapped.length} link${wrapped.length > 1 ? 's' : ''} unwrapped from ${[...new Set(wrapped.map(l => l.unwrapped))].join(', ')} so the real destination is checked`);
-  const qrs = c.atts.filter(a => a.extra.qr);
-  add('links', 'links.qr', 'QR codes', qrs.length ? 'bad' : 'ok', qrs.length
+  const qrs = c.atts.filter(a => a.extra.qr), images = c.atts.filter(a => /^(png|jpg|gif)$/.test(a.fam)).length;
+  if (!c.env.decodeQR) add('links', images ? 'links.qr-unchecked' : 'links.qr', 'QR codes', images ? 'warn' : 'na', images
+    ? `${images} image${images > 1 ? 's were' : ' was'} not checked for QR codes: the optional QR reader isn't installed (npm install jsqr jpeg-js; see the README)`
+    : 'No images to check');
+  else add('links', 'links.qr', 'QR codes', qrs.length ? 'bad' : 'ok', qrs.length
     ? `${qrs.length > 1 ? qrs.length + ' QR codes hide links' : 'A QR code hides a link'} from email filters: ${qrs.map(a => defangAll(a.extra.qr || '')).join(', ')}`
-    : c.env.decodeQR ? 'No QR codes in images' : 'Not checked: QR decoding isn\'t available here');
+    : 'No QR codes in images');
 }

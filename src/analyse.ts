@@ -13,6 +13,7 @@ import { attachedEmails, MAX_DEPTH, MAX_NESTED, peek, reporterOf, reportSignals 
 import { defangAll } from './defang.js';
 import { isOutlookMsg } from './files/sniff.js';
 import { addOnline } from './online.js';
+import { msgToEml } from './msg.js';
 import { applyAllow } from './allow.js';
 import type { AnalyseOptions, Analysis, EmailAnalysis } from './types.js';
 
@@ -39,8 +40,7 @@ async function analyseNested(input: string | Uint8Array, opts: AnalyseOptions): 
   const t0 = now(), depth = opts.depth ?? 0;
   let msg: { hadHeaders: boolean; bodyFrom: string } | null = null;
   if (typeof input !== 'string' && isOutlookMsg(input)) {
-    if (!opts.env.readMsg) throw new Error('This is an Outlook .msg file, which this host can\'t read. Save it as .eml (Outlook: File › Save As), or use the Node version.');
-    const conv = opts.env.readMsg(input);
+    const conv = (opts.env.readMsg || msgToEml)(input);
     input = new TextEncoder().encode(conv.eml); msg = conv;
   }
   const outer = await analyseOne(input, opts);

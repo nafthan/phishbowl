@@ -1,26 +1,36 @@
-// Node host for the engine: HTML parsing with linkedom, QR decoding with jsQR (PNG and JPEG), and file helpers.
+// Node host for the engine: file helpers, and QR decoding when the optional QR reader is installed.
+// HTML parsing, .msg reading and PNG decoding are Phishbowl's own code. Reading QR codes uses two optional packages,
+// jsqr (and jpeg-js for JPEG images): `npm install jsqr jpeg-js` next to Phishbowl turns it on. Without them, images
+// are listed as not checked for QR codes and everything else works the same.
 import { readFile, stat, readdir } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { parseHTML } from 'linkedom';
-import jsQRModule from 'jsqr';
-import { PNG } from 'pngjs';
-import jpeg from 'jpeg-js';
+import { decodePng, isPng } from './png.js';
 import { analyse } from '../analyse.js';
 import { msgToEml } from './msg.js';
 
-// jsqr is CommonJS with a default export; depending on the loader it arrives wrapped or not.
 type JsQR = (data: Uint8ClampedArray, width: number, height: number) => { data: string } | null;
-const jsQR: JsQR = ((jsQRModule as unknown as { default?: JsQR }).default ?? jsQRModule) as unknown as JsQR;
+type JpegDecode = (b: Uint8Array, o: { useTArray: true; maxMemoryUsageInMB: number }) => { data: Uint8Array; width: number; height: number };
+const require_ = createRequire(import.meta.url);
+/** Load an optional package, or undefined if it isn't installed. */
+function optional<T>(name: string, pick: (m: unknown) => unknown): T | undefined {
+  try { const m = require_(name) as { default?: unknown }; return (pick(m) ?? pick(m.default)) as T; } catch { return undefined; }
+}
+let qr: { jsQR?: JsQR; jpeg?: JpegDecode } | null = null;
+/** The optional QR reader: which parts are installed. */
+export function qrSupport(): { qr: boolean; jpeg: boolean } {
+  qr ??= { jsQR: optional<JsQR>('jsqr', m => typeof m === 'function' ? m : undefined), jpeg: optional<JpegDecode>('jpeg-js', m => (m as { decode?: unknown })?.decode) };
+  return { qr: !!qr.jsQR, jpeg: !!qr.jsQR && !!qr.jpeg };
+}
 import type { AnalyseOptions, Analysis, Env } from '../types.js';
 
 /** Largest file the CLI will read. Real emails with attachments are rarely over a few MB. */
 export const MAX_BYTES = 25 * 1024 * 1024;
 
 function decodeImage(bytes: Uint8Array, mime: string): { data: Uint8Array; width: number; height: number } | null {
-  const buf = Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   try {
-    if (/png/i.test(mime) || (bytes[0] === 0x89 && bytes[1] === 0x50)) { const p = PNG.sync.read(buf); return { data: p.data, width: p.width, height: p.height }; }
-    if (/jpe?g/i.test(mime) || (bytes[0] === 0xff && bytes[1] === 0xd8)) { const j = jpeg.decode(buf, { useTArray: true, maxMemoryUsageInMB: 256 }); return { data: j.data, width: j.width, height: j.height }; }
+    if (isPng(bytes)) return decodePng(bytes);
+    if (qr?.jpeg && (/jpe?g/i.test(mime) || (bytes[0] === 0xff && bytes[1] === 0xd8))) { const j = qr.jpeg(bytes, { useTArray: true, maxMemoryUsageInMB: 256 }); return { data: j.data, width: j.width, height: j.height }; }
   } catch { /* not decodable */ }
   return null;
 }
@@ -37,18 +47,17 @@ function prepare(img: { data: Uint8Array; width: number; height: number }) {
   return { out, w, h };
 }
 
-export function nodeEnv(): Env {
-  return {
-    parseHtml: (html: string) => parseHTML(/<html[\s>]/i.test(html) ? html : `<!doctype html><html><body>${html}</body></html>`).document as unknown as Document,
-    readMsg: (bytes: Uint8Array) => msgToEml(bytes),
-    decodeQR: async (bytes, mime) => {
-      if (bytes.length > 8 * 1024 * 1024) return null;
-      const img = decodeImage(bytes, mime); if (!img || img.width * img.height > 16e6) return null;
-      const { out, w, h } = prepare(img);
-      const r = jsQR(out, w, h);
-      return r ? r.data : null;
-    },
+/** The Node host. QR codes are read only if the optional QR reader is installed (and `o.qr` isn't false). */
+export function nodeEnv(o: { qr?: boolean } = {}): Env {
+  const env: Env = { readMsg: (bytes: Uint8Array) => msgToEml(bytes) };
+  if (o.qr !== false && qrSupport().qr) env.decodeQR = async (bytes, mime) => {
+    if (bytes.length > 8 * 1024 * 1024) return null;
+    const img = decodeImage(bytes, mime); if (!img || img.width * img.height > 16e6) return null;
+    const { out, w, h } = prepare(img);
+    const r = qr!.jsQR!(out, w, h);
+    return r ? r.data : null;
   };
+  return env;
 }
 
 export type NodeAnalyseOptions = Omit<AnalyseOptions, 'env'> & { env?: Env };

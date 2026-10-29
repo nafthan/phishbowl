@@ -1,8 +1,9 @@
 // HTML (attachment or SVG): forms, scripts and the patterns used for smuggling and redirects. Parsed inertly.
 import type { Env, HtmlInfo } from '../types.js';
+import { parseHtml } from '../html.js';
 
 export function inspectHtml(text: string, env: Env): HtmlInfo {
-  const doc = env.parseHtml(text);
+  const doc = (env.parseHtml ?? parseHtml)(text);
   const forms = [...doc.querySelectorAll('form')].map(f => ({ action: f.getAttribute('action') || '(same page)', method: (f.getAttribute('method') || 'get').toUpperCase(), password: !!f.querySelector('input[type=password]') }));
   const scripts = [...doc.querySelectorAll('script')], inline = scripts.map(s => s.textContent || '').join('\n');
   const handlers = [...doc.querySelectorAll('*')].filter(e => [...e.attributes].some(a => /^on/i.test(a.name))).length;

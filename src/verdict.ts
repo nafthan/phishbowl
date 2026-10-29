@@ -27,9 +27,9 @@ export const MALICIOUS_SCORE = 12;
  * pile up on legitimate bulk mail. Tested on 4,150 real legitimate emails and 660 real phishing emails (scripts/real-samples.ts). */
 export const SUSPICIOUS_SCORE = 6;
 
-/** Warnings shown for context that never add to the score: missing delivery headers say the checks are blind, not that
- * the email is bad (they only lower the confidence). */
-export const UNSCORED = new Set(['route.noheaders']);
+/** Warnings shown for context that never add to the score: they say a check couldn't run (no delivery headers, no QR
+ * reader installed), not that the email is bad. They lower the confidence. */
+export const UNSCORED = new Set(['route.noheaders', 'links.qr-unchecked']);
 export const weightOf = (c: Check): number => c.status === 'bad' ? WEIGHT[c.id] || DEFAULT_BAD_WEIGHT : c.status === 'warn' && !UNSCORED.has(c.id) ? 1 : 0;
 
 export function verdictOf(checks: Check[]): Verdict {
@@ -43,7 +43,7 @@ export function verdictOf(checks: Check[]): Verdict {
   score += warn.length - capped;
   const crit = bad.some(c => (WEIGHT[c.id] || 0) >= CRITICAL);
   const v = crit || score >= MALICIOUS_SCORE ? 'malicious' : score >= SUSPICIOUS_SCORE || bad.length ? 'suspicious' : 'clean';
-  const conf = v === 'malicious' ? (score >= 20 ? 'high' : 'medium') : v === 'suspicious' ? 'medium' : ok.length >= 6 && !checks.some(c => c.id === 'route.noheaders') ? 'high' : 'medium';
+  const conf = v === 'malicious' ? (score >= 20 ? 'high' : 'medium') : v === 'suspicious' ? 'medium' : ok.length >= 6 && !checks.some(c => UNSCORED.has(c.id) && c.status === 'warn') ? 'high' : 'medium';
   return { v, score, conf, bad: bad.length, warn: checks.filter(c => c.status === 'warn').length, ok: ok.length, run: checks.filter(c => c.status !== 'na').length };
 }
 

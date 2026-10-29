@@ -194,13 +194,26 @@ export interface TextAnalysis {
 
 export type Analysis = EmailAnalysis | TextAnalysis;
 
+/** The parts of a parsed HTML document the checks use. A browser's Document has them, and so does html.ts. */
+export interface HtmlEl {
+  getAttribute(name: string): string | null;
+  readonly textContent: string | null;
+  querySelector(selector: string): HtmlEl | null;
+  readonly attributes: Iterable<{ name: string }>;
+}
+export interface HtmlDoc {
+  readonly body: { readonly textContent: string | null } | null;
+  querySelectorAll(selector: string): Iterable<HtmlEl> & { readonly length: number };
+  querySelector(selector: string): HtmlEl | null;
+}
+
 /** What the engine needs from its host. The browser and Node supply different implementations. */
 export interface Env {
-  /** Parse HTML inertly (no scripts run, nothing loads). */
-  parseHtml(html: string): Document;
+  /** Parse HTML inertly (no scripts run, nothing loads). Optional: the engine has its own parser (html.ts). */
+  parseHtml?(html: string): HtmlDoc;
   /** Decode a QR code in an image, if the host can. */
   decodeQR?(bytes: Uint8Array, mime: string): Promise<string | null>;
-  /** Convert an Outlook .msg file into a standard email, if the host can. */
+  /** Convert an Outlook .msg file into a standard email. Optional: the engine has its own reader (msg.ts). */
   readMsg?(bytes: Uint8Array): { eml: string; hadHeaders: boolean; bodyFrom: string };
 }
 

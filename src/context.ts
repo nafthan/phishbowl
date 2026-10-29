@@ -8,7 +8,8 @@ import { parseAuth, parseReceived, parseSpam } from './headers.js';
 import { inspectLink, unwrapLink } from './links.js';
 import { decodeWords, H, HA, splitHeaders, walk, type Parts } from './mime.js';
 import { findBrand, fold } from './text.js';
-import type { Attachment, Auth, Check, Env, Group, Header, Hop, Link, SpamField, Status } from './types.js';
+import { parseHtml } from './html.js';
+import type { Attachment, Auth, Check, Env, Group, Header, Hop, HtmlDoc, Link, SpamField, Status } from './types.js';
 
 export interface Ctx {
   env: Env;
@@ -54,7 +55,7 @@ export interface Ctx {
   /** Who really sent the content: the original sender of an inline forward, otherwise the sending chain. */
   contentOrgs: string[];
   freeMail: boolean;
-  docs: Document[];
+  docs: HtmlDoc[];
   htmlText: string;
   /** Plain text of the message (text part, or the HTML's text). */
   body: string;
@@ -116,7 +117,7 @@ export async function buildContext(raw: string, binary: boolean, own: string[], 
   const brandClaim = !!nameBrand && !sendOrgs.some(d => brandOwns(nameBrand, d)) && !isOwn(fromDom) && !nameHasSender;
   const freeMail = suffixMatch(fromDom, FREE_MAIL);
 
-  const docs = parts.html.map(h => env.parseHtml(h));
+  const docs = parts.html.map(h => (env.parseHtml ?? parseHtml)(h));
   const htmlText = docs.map(d => (d.body ? d.body.textContent || '' : '')).join('\n');
   const body = (parts.text.join('\n') || htmlText).replace(/\r/g, '');
   const all = subj + '\n' + body + '\n' + htmlText;
